@@ -1,0 +1,27 @@
+class Solution {
+	
+	ListNode addTwoNumbers(ListNode firstList, ListNode secondList) {
+		// add your logic here
+		ListNode head = new ListNode(0);
+        ListNode temp = head;
+		int carry=0;
+		while(firstList!=null || secondList!=null || carry==1){
+			int sum=0;
+			if(firstList!=null){
+				sum+=firstList.data;
+				firstList=firstList.next;
+			}
+			if(secondList!=null){
+				sum+=secondList.data;
+				secondList=secondList.next;
+			}
+			sum+=carry;
+			carry=sum/10;
+			temp.next = new ListNode(sum%10);
+			temp = temp.next;
+	
+		}
+		head = head.next;
+		return head;
+	}
+}
