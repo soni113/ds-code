@@ -1,0 +1,21 @@
+class Solution {
+	ListNode xthNodeFromEnd(ListNode head, int x) {
+		// add your logic here
+		ListNode curr = head;
+		int count=0;
+		while(curr.next!=null){
+			count++;
+			curr = curr.next;
+		}
+		int mid = count-x;
+		curr=head;
+		int c=0;
+		while(curr.next!=null){
+			if(c==mid)
+				return curr.next;
+			c++;
+			curr = curr.next;
+		}
+		return head;
+	}
+}
