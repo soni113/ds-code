@@ -1,0 +1,21 @@
+class Solution {
+   int dp[];
+   int rodCut(int[] prices, int n) {
+       dp[0] = 0;
+       if(n <= 0) {
+           return 0;
+       }
+       int maxValue = Integer.MIN_VALUE;
+       for(int i = 1; i <= n; i++) {
+           for(int j = 0; j < i; j++) {
+               maxValue = Math.max(maxValue, prices[j] + dp[i - j - 1]);
+           }
+           dp[i] = maxValue;
+       }
+       return dp[n];
+   }
+   int maximumProfit(int n, int[] prices) {
+       dp = new int[n + 1];
+       return rodCut(prices, n);
+   }
+}
