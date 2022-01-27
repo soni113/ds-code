@@ -1,0 +1,24 @@
+class Solution {
+    public void reorderList(ListNode head) {
+         ListNode node = head;
+        Stack<ListNode>stack  = new Stack<>();
+        ListNode last = null,first = head;
+        while(node!=null){
+            stack.push(node);
+            node = node.next;
+        }
+        node = head;
+        while(node!=null){
+            last = stack.pop();
+            first = first.next;
+            node.next = last;
+            last.next = first;
+            node = first;
+            if(node!=null && node.next==last)
+            {
+                node.next = null;
+                break;
+            }
+        }
+    }
+}
