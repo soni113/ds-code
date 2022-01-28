@@ -1,0 +1,27 @@
+class Solution {
+	String countAndSay(int n) {
+	    StringBuilder sb = new StringBuilder();
+        String cur = "1";
+
+        for (int i = 1; i < n; i++) {
+            int count = 1;
+            char c = cur.charAt(0);
+
+            for (int j = 1; j < cur.length(); j++) {
+                if (cur.charAt(j) == c) count++;
+                else {
+                    sb.append(count);
+                    sb.append(c);
+                    count = 1;
+                    c = cur.charAt(j);
+                }
+            }
+            sb.append(count);
+            sb.append(c);
+
+            cur = sb.toString();
+            sb = new StringBuilder();
+        }
+        return cur;
+    }
+}
