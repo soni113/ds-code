@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return dfsHeight(root)!=-1;
+        
+    }
+    int dfsHeight(TreeNode root){
+        if(root==null)
+            return 0;
+        int l =dfsHeight(root.left);
+        if(l==-1)
+            return -1;
+        int r = dfsHeight(root.right);
+        if(r==-1)
+            return -1;
+        if(Math.abs(l-r)>1)
+            return -1;
+        return Math.max(l,r)+1;
+    }
+}
