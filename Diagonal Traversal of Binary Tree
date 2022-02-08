@@ -1,0 +1,27 @@
+class Tree
+{
+     public ArrayList<Integer> diagonal(Node root)
+      {
+           //add your code here.
+           Queue<Node> q=new ArrayDeque<>();
+           ArrayList<Integer> list=new ArrayList<Integer>();
+           q.add(root);
+           while(!q.isEmpty())
+           {
+             Node temp=q.poll();
+             
+             while(temp!=null)
+             {
+              list.add(temp.data);
+              if(temp.left!=null)
+              {
+                 
+                q.add(temp.left);
+                
+              }
+               temp=temp.right;
+             }
+           }
+           return list;
+      }
+}
