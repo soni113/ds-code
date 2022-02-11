@@ -1,0 +1,15 @@
+class Solution {
+    int dp[] = new int[50];
+	int recursiveStairs(int n) {
+		if(n <=2) 
+			return n;
+		else if(dp[n] != -1) 
+			return dp[n];
+        return dp[n] = recursiveStairs(n - 1) + recursiveStairs(n - 2);
+	}
+	int climbStairs(int n) 
+    {
+		Arrays.fill(dp,-1);
+	    return recursiveStairs(n);
+    }
+}
