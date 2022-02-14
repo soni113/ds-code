@@ -1,0 +1,53 @@
+class Solution {
+    public Node flatten(Node head) 
+    {
+        if(head == null){
+        return null;
+    }
+    Stack<Node> stack = new Stack<>();
+    Node t = head;
+    
+    while(t != null){
+    
+        // child present!
+        
+        
+        if(t.child != null)
+        {
+            System.out.println(t.child.val);
+            if(t.next != null)
+            {
+                //System.out.println(t.next.val);
+                stack.push(t.next);
+                //System.out.print(stack.push().val);
+                t.next.prev = null;
+            }
+            Node child = t.child; 
+            t.next = child;
+            child.prev = t;
+            t.child = null;
+        }
+        //System.out.println(t.next.val);
+        
+        
+        if(t.next == null && !stack.isEmpty())
+        {
+            //System.out.println(t.next.val);
+           // System.out.println(stack.pop().val);
+           Node node = stack.pop();
+           // System.out.println(node.val);
+           t.next = node;
+           node.prev = t;
+        }
+        
+        
+        t = t.next;
+        
+    }
+    return head;
+      
+    }
+    
+
+    
+}
